@@ -1,5 +1,6 @@
 package org.example;
 
+import io.github.pixee.security.BoundedLineReader;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletException;
@@ -27,7 +28,7 @@ public class Application extends AbstractHandler
             final StringBuilder page = new StringBuilder(PAGE_SIZE);
             String line = null;
 
-            while ((line = reader.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(reader, 5_000_000)) != null) {
                 page.append(line);
             }
 
