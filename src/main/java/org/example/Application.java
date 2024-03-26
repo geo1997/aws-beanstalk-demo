@@ -66,7 +66,7 @@ public class Application extends AbstractHandler
         baseRequest.setHandled(true);
 
         String pathInfo = request.getPathInfo();
-        if (pathInfo.equalsIgnoreCase("/crontask")) {
+        if ("/crontask".equalsIgnoreCase(pathInfo)) {
             handleCronTask(request, response);
         } else {
             handleHttpRequest(request, response);
